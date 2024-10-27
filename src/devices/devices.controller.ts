@@ -10,4 +10,13 @@ export class DevicesController {
   getAllDevices() {
     return this.devicesService.getAllDevices();
   }
+
+  @Post()
+  requestDevice(
+    @Body() deviceId: string,
+    qrCodeId: string,
+    qrCodeValue: string,
+  ) {
+    return { deviceId, qrCodeId, qrCodeValue };
+  }
 }
