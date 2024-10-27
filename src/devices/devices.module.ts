@@ -7,5 +7,6 @@ import { MongooseModule } from '@nestjs/mongoose';
   imports: [],
   controllers: [DevicesController],
   providers: [DevicesService],
+  exports: [],
 })
 export class DevicesModule {}

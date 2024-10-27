@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common';
 import { DevicesModule } from './devices/devices.module';
 import { MongooseModule } from '@nestjs/mongoose';
+import { DevicesController } from './devices/devices.controller';
 
 @Module({
-  imports: [],
+  imports: [DevicesModule],
   controllers: [],
   providers: [],
 })
