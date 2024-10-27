@@ -6,30 +6,26 @@ import {
 } from '@nestjs/common';
 import { CreateDeviceDto } from './dto/createDevice.dto';
 import { InjectModel } from '@nestjs/mongoose';
-import { Device } from './device.schema';
+
 import { Model } from 'mongoose';
+import Device from './device.interface';
 
 @Injectable()
 export class DevicesService {
-  constructor(@InjectModel(Device.name) private deviceModel: Model<Device>) {}
-  private devices: Device[] = [];
+  private devices: Device[] = [
+    {
+      deviceId: '8a0fc66a61a959f6',
+      qrCodeId: 'a652d57094b7590b0dea115b156c07098abdea87',
+      qrCodeValue: 'P22498244182551944',
+    },
+    {
+      deviceId: 'nhom23',
+      qrCodeId: 'iot-nhom23',
+      qrCodeValue: 'http-iot-nhom23',
+    },
+  ];
 
   async getAllDevices() {
-    const device = await this.deviceModel.find().exec();
-    return device;
-  }
-
-  async getDeviceById(deviceId: string) {
-    const device = await this.deviceModel.findOne({ deviceId });
-    if (device) {
-      return device;
-    }
-    throw new HttpException('Không tìm thấy thiết bị', HttpStatus.NOT_FOUND);
-  }
-
-  async createDevice(device: CreateDeviceDto) {
-    const newDevice = { ...device };
-    await this.deviceModel.create(newDevice);
-    return newDevice;
+    return this.devices;
   }
 }

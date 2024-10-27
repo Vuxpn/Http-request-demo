@@ -10,14 +10,4 @@ export class DevicesController {
   getAllDevices() {
     return this.devicesService.getAllDevices();
   }
-
-  @Get(':id')
-  getDeviceById(@Param('id') deviceId: string) {
-    return this.devicesService.getDeviceById(deviceId);
-  }
-
-  @Post('create')
-  handlePostRequest(@Body() createDeviceDto: CreateDeviceDto) {
-    return this.devicesService.createDevice(createDeviceDto);
-  }
 }
